@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
-	
+	public ProductDaoImpl() {
+		System.out.println("1.#### PeroductDaoImpl() 생성자:"+this);
+	}
 	@Override
 	public List<Product> productList(){
 		List<Product> productList=new ArrayList<Product>();
