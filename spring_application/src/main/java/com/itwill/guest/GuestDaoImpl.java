@@ -14,11 +14,19 @@ public class GuestDaoImpl implements GuestDao {
 	public GuestDaoImpl() {
 		System.out.println("2.#### GuestDaoImpl() 기본생성자호출");
 	}
+		
+	public GuestDaoImpl(DataSource dataSource) {
+		System.out.println("2.#### GuestDaoImpl("+dataSource+") 생성자호출");
+		this.dataSource=dataSource;
+	}
+	
 	
 	public void setDataSource(DataSource dataSource) {
 		System.out.println("3.#### GuestDaoImpl : setDataSource("+dataSource+") 호출");
 		this.dataSource = dataSource;
 	}
+
+
 
 
 	@Override

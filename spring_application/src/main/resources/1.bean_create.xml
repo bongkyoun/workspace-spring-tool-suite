@@ -30,9 +30,9 @@
 		기본생성자를 호출하여 빈객체를 생성하고 id로 등록한다.
 		 -->
 		<!-- DataSource객체 --> 
-		<bean id="dataSource" 
-		 	  class="org.apache.commons.dbcp2.BasicDataSource" 
-		 	  scope="singleton"/>
+		 <bean 	id="dataSource" 
+		 		class="org.apache.commons.dbcp2.BasicDataSource" 
+		 		scope="singleton"/>
 		<!-- Dao객체 -->
 		<bean id="guestDao" 
 			  class="com.itwill.guest.GuestDaoImpl"/>
@@ -48,6 +48,7 @@
 		  	  
 		  	    
 </beans>
+
 
 
 

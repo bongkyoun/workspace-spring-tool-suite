@@ -9,7 +9,6 @@
 	<name>spring_application</name>
 	<description>spring_application</description>
 	<properties>
-	
 		<java.version>1.8</java.version>
 		<spring.framework.version>4.3.30.RELEASE</spring.framework.version>
 	</properties>
@@ -25,7 +24,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-			<!-- apache datasource(dbcp2) -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
