@@ -10,8 +10,8 @@ PHONE            VARCHAR2(15)
 DOB              DATE         
 ADDR_ID          NUMBER(11)         
 */
-public class Student {
-	//property
+public class Student
+{
 	private Integer studId;
 	private String name;
 	private String email;
@@ -19,7 +19,6 @@ public class Student {
 	//private int addrId;//FK
 	private Address address;
 	private List<Course> courseList;
-	
 	
 	
 	public Student() {

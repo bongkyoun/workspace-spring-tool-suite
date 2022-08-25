@@ -24,7 +24,7 @@ public class StudentDaoMain {
 		  resultMap :  DTO
 		 */
 		System.out.println("---------findStudentByIdResultMap--------------------");
-		System.out.println(studentDao.findStudentByIdResultMap(2));
+		System.out.println(studentDao.findStudentByIdResultMap(5));
 		System.out.println("---------findAllStudentsResultMap--------------------");
 		System.out.println(studentDao.findAllStudentsResultMap());
 		/**************************************************
@@ -36,7 +36,7 @@ public class StudentDaoMain {
 		 */
 		System.out.println("---------findStudentByIdWithAddress------------------");
 		System.out.println(studentDao.findStudentByIdWithAddress(1));
-		System.out.println(studentDao.findStudentByIdWithAddress(7));
+		System.out.println(studentDao.findStudentByIdWithAddress(2));
 		/*********************************************************
 		 * SELECT[students + courses[course_enrollment] JOIN( 1 : N )
 		 ********************************************************/
@@ -46,6 +46,7 @@ public class StudentDaoMain {
 		 */
 		System.out.println("---------findStudentByIdWithCourses------------------");
 		System.out.println(studentDao.findStudentByIdWithCourses(1));
+		System.out.println(studentDao.findStudentByIdWithCourses(2));
 		
 		/**************************************************
 		INSERT
@@ -54,14 +55,15 @@ public class StudentDaoMain {
 		parameterType: DTO,VO,Domain
 		*/
 		System.out.println("---------insertStudent(Dto)--------------------------");
-		System.out.println(studentDao.insertStudent(new Student(null, "김가네", "kim@naver.com", new Date(), null)));
+		System.out.println(studentDao.insertStudent(new Student(null, "김가네", "kim@naver.com",new Date(), null)));
 		System.out.println("---------insertStudentBySequence1--------------------");
 		Student insertStudent=
-				new Student(null, "김시퀀스", "sequence@naver.com", new Date(), null);
-		System.out.println("insert row count : "+studentDao.insertStudentBySequence1(insertStudent));
-		System.out.println("insert sequence : "+insertStudent.getStudId());
+			new Student(null, "시퀀스","sequence@naver.com" , new Date(), null);
+		System.out.println("insert row count:"+studentDao.insertStudentBySequence1(insertStudent));
+		System.out.println("insert sequence:"+insertStudent.getStudId());
 		System.out.println("---------insertStudentBySequence2--------------------");
-		System.out.println("insert row count : "+studentDao.insertStudentBySequence2(insertStudent));
+		System.out.println("insert sequence:"+studentDao.insertStudentBySequence2(insertStudent));
+		
 		/**************************************************
 		 UPDATE
 		 ***************************************************/
@@ -81,7 +83,8 @@ public class StudentDaoMain {
 		parameterType: java.lang.Integer,java.lang.String
 		*/
 		System.out.println("---------deleteStudentById---------------------------");
-		System.out.println("delete row Count : "+studentDao.deleteStudentById(8));
+		System.out.println("delete row count:"+
+		studentDao.deleteStudentById(25));
 		
 		
 	}

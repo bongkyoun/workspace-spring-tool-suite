@@ -22,7 +22,7 @@ public class JdbcStudentDao {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(StudentSQL.SELECT_STUDENT_LIST);
-			//select stud_id as studid, name, email, dob, from students
+			//select stud_id as studid ,name,email,dob from students
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Student student = new Student();
