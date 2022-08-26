@@ -44,9 +44,6 @@
 	<!-- properties file사용설정 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	<!-- Apache DataSource -->
-
-	
-	
 	<bean id="apacheDataSource" 
 	      class="org.apache.commons.dbcp2.BasicDataSource">
 	      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -57,31 +54,4 @@
 
 	
 	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	`

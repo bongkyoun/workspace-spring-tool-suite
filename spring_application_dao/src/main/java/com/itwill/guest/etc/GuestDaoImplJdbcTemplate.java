@@ -1,10 +1,14 @@
-package com.itwill.guest;
+package com.itwill.guest.etc;
 
 
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.itwill.guest.Guest;
+import com.itwill.guest.GuestDao;
+import com.itwill.guest.GuestSQL;
 
 public class GuestDaoImplJdbcTemplate implements GuestDao{
 	private JdbcTemplate jdbcTemplate;
@@ -52,38 +56,3 @@ public class GuestDaoImplJdbcTemplate implements GuestDao{
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,4 @@
 0.pom.xml파일 project name변경
-
-##################### oracle driver ####################			
-		<!-- 1.oracle driver -->
-		<!-- 2.oracle driver -->
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
-		<dependency>
-		    <groupId>com.oracle.database.jdbc</groupId>
-		    <artifactId>ojdbc6</artifactId>
-		    <version>11.2.0.4</version>
-		</dependency>
-		
 ########################################################
 	  <project ...>
 		...

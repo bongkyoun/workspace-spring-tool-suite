@@ -1,4 +1,4 @@
-package com.itwill.guest;
+package com.itwill.guest.etc;
 
 
 
@@ -13,12 +13,13 @@ public class GuestDaoImplJdbcTemplateTestMain {
 	public static void main(String[] args) throws Exception{
 		System.out.println("----Spring Container초기화시작[ApplicationContext객체생성시작]");
 		ApplicationContext applicationContext=
-				new ClassPathXmlApplicationContext("com/itwill/guest/guset_dao_jdbc_template.xml");
+				new ClassPathXmlApplicationContext("com/itwill/guest/guest_dao_jdbc_template.xml");
 		System.out.println("----Spring Container초기화끝[ApplicationContext객체생성끝]");
-		GuestDao guestDao =
+		GuestDao guestDao=
 				(GuestDao)applicationContext.getBean("guestDao");
-		System.out.println("1.selectAll : "+guestDao.selectAll());
-		System.out.println("2.selectByNo: "+guestDao.selectByNo(1));
+		System.out.println("1.selectAll:"+guestDao.selectAll());
+		System.out.println("2.selectByNo:"+guestDao.selectByNo(164));
+		
 	}
 
 }
