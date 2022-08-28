@@ -24,12 +24,17 @@ public class Guest {
 	private String guest_homepage;
 	private String guest_title;
 	private String guest_content;
-	
 	public Guest() {
+		System.out.println("### Guest()기본 생성자");
 	}
 	@Autowired
-	public Guest(@Value(value = "100") int guest_no, @Value(value = "이름")String guest_name, @Value(value = "2022/10/10")String guest_date, @Value(value = "메일")String guest_email, @Value(value = "홈페이지")String guest_homepage,
-			@Value(value = "타이틀")String guest_title, @Value(value = "내용")String guest_content) {
+	public Guest(@Value(value = "999") int guest_no,
+				 @Value(value = "이름") String guest_name, 
+				 @Value(value = "2022/10/10") String guest_date,
+				 @Value(value = "guard@gmail.com") String guest_email,
+				 @Value(value = "http://www.gmail.com") String guest_homepage,
+				 @Value(value = "제목") String guest_title,
+				 @Value(value = "내용")String guest_content) {
 		super();
 		this.guest_no = guest_no;
 		this.guest_name = guest_name;
@@ -38,7 +43,7 @@ public class Guest {
 		this.guest_homepage = guest_homepage;
 		this.guest_title = guest_title;
 		this.guest_content = guest_content;
-		System.out.println("####Guest("+guest_no+","+guest_name+"...)생성자");
+		System.out.println("####Guest("+guest_no+","+guest_name+".....) 생성자");
 	}
 	public int getGuest_no() {
 		return guest_no;
@@ -56,6 +61,7 @@ public class Guest {
 	public void setGuest_name(String guest_name) {
 		this.guest_name = guest_name;
 	}
+	
 	public String getGuest_date() {
 		return guest_date;
 	}
@@ -68,7 +74,7 @@ public class Guest {
 		return guest_email;
 	}
 	@Autowired
-	@Value(value = "gmail.com")
+	@Value(value = "100")
 	public void setGuest_email(String guest_email) {
 		this.guest_email = guest_email;
 	}
@@ -84,7 +90,7 @@ public class Guest {
 		return guest_title;
 	}
 	@Autowired
-	@Value(value = "제목")
+	@Value(value = "타이틀")
 	public void setGuest_title(String guest_title) {
 		this.guest_title = guest_title;
 	}
@@ -92,7 +98,7 @@ public class Guest {
 		return guest_content;
 	}
 	@Autowired
-	@Value(value = "내용")
+	@Value(value = "컨텐트")
 	public void setGuest_content(String guest_content) {
 		this.guest_content = guest_content;
 	}

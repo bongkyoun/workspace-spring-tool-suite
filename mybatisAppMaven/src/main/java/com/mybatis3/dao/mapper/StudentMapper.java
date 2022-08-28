@@ -22,7 +22,7 @@ public interface StudentMapper {
 	 * 메쏘드인자타입은 StudentMapper.xml 파일의 parameterType 와일치
 	 * 메쏘드리턴타입은 StudentMapper.xml 파일의 resultType 와일치(ResultSet이 1개이상일경우는 List)
 	 */
-	@Select("select stud_id as studid,name,email,dob  from students where stud_id = #{studId}")
+	@Select("select stud_id as studid,name,email,dob from students where stud_id = #{studId}")
 	public Student findStudentById( Integer studId);
 	/*
 	<select id="findStudentById" 

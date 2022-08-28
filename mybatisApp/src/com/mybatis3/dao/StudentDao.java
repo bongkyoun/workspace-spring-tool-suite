@@ -83,7 +83,7 @@ public class StudentDao {
 	}
 
 	/*********************************************************
-	 * SELECT[students + courses[course_enrollment] JOIN( 1 : N )
+	 * SELECT[students + courses[course_enrollment]+course] JOIN( 1 : N )
 	 ********************************************************/
 	/*
 	 * select sql의결과타입이 DTO,VO,Domain객체인경우
@@ -105,27 +105,28 @@ public class StudentDao {
 	*/
 	public int insertStudent(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		int rowCount=sqlSession.insert(NAMESPACE+"insertStudent",student);
-		
+		int rowCount=
+				sqlSession.insert(NAMESPACE+"insertStudent",student);
 		sqlSession.close();
 		return rowCount;
 	}
 
 	public int insertStudentBySequence1(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		int rowCount =
+		int rowCount=
 				sqlSession.insert(NAMESPACE+"insertStudentBySequence1",student);
 		sqlSession.close();
 		return rowCount;
 	}
-
 	public int insertStudentBySequence2(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		int rowCount =
+		int rowCount=
 				sqlSession.insert(NAMESPACE+"insertStudentBySequence1",student);
 		sqlSession.close();
 		return student.getStudId();
 	}
+
+
 
 	/**************************************************
 	 * UPDATE
@@ -135,7 +136,7 @@ public class StudentDao {
 	 */
 	public int updateStudentById(Student updateStudent) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(false);
-		int rowCount=sqlSession.update(NAMESPACE+"updateStudentById", updateStudent);
+		int rowCount=sqlSession.update(NAMESPACE+"updateStudentById",updateStudent);
 		sqlSession.commit();
 		sqlSession.close();
 		return rowCount;
@@ -149,11 +150,22 @@ public class StudentDao {
 	 */
 	public int deleteStudentById(Integer studId) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		int rowCount = 
+		int rowCount=
 				sqlSession.delete(NAMESPACE+"deleteStudentById",studId);
-		
 		sqlSession.close();
 		return rowCount;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

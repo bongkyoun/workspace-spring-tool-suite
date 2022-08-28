@@ -20,12 +20,13 @@ public class SpringApplicationContextSetterInjectionAnnotationMain {
 				(GuestService)applicationContext.getBean("guestService");
 		System.out.println("GuestService객체:"+guestService);
 		System.out.println(guestService.selectAll());
-		System.out.println(guestService.selectByNo(124));
+		System.out.println(guestService.selectByNo(212));
 		
 		System.out.println("----------UserService--------");
 		UserService userService=
 				(UserService)applicationContext.getBean("userService");
 		System.out.println("UserService객체:"+userService);
+		
 		
 		System.out.println("----------기본형,String 데이타 setter injection--------");
 		Guest guest=(Guest)applicationContext.getBean("guest");

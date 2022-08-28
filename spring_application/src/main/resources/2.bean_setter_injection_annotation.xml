@@ -53,8 +53,10 @@
 		<!-- 1.참조타입객체 참조값(id)을 setter메쏘드 인자로 Injection -->
 		<!-- Service -->
 		<!-- 2.기본타입데이타(값) 을 setter메쏘드 인자로 Injection -->
+		
 		  	    
 </beans>
+
 
 
 

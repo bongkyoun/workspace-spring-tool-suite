@@ -2,6 +2,7 @@ package com.itwill.guest.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.itwill.guest.Guest;
@@ -13,13 +14,14 @@ public interface GuestMapper {
 	 * 메쏘드인자타입은 GuestMapper.xml 파일의 parameterType 와일치
 	 * 메쏘드리턴타입은 GuestMapper.xml 파일의 resultType 와일치
 	 */
-	
+	@Select("select * from guest")
 	public List<Guest> selectAll();
 	/*
 	 <select id="selectAll" resultType="com.itwill.guest.Guest">
 		SELECT * FROM GUEST
 	</select>
 	*/
+	@Select("select * from guest where guest_no=#{guest_no}")
 	public Guest selectByNo(Integer guest_no);
 	/*
 	<select id="selectByNo" 
@@ -29,6 +31,7 @@ public interface GuestMapper {
 		WHERE guest_no=#{guest_no}
 	</select>
 	*/
+	@Insert("insert into guest values(guest_no_seq.nextval,#{guest_name},sysdate,#{guest_email},#{guest_homepage},#{guest_title},#{guest_content})")
 	public int insertGuest(Guest guest);
 	/*
 	<insert id="insertGuest" parameterType="com.itwill.guest.Guest">

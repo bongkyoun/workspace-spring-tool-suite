@@ -2,6 +2,8 @@ package com.itwill.guest;
 
 
 
+import java.sql.Date;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,13 +21,14 @@ public class GuestDaoImplTestAnnotationMain {
 				(GuestDao)applicationContext.getBean("guestDaoImpl");
 		
 		System.out.println("### GuestDao.selectAll():"+guestDao.selectAll());
-		Guest guest=guestDao.selectByNo(129);
-		System.out.println("### GuestDao.selectByNo(129):"+guest);
-		guest.setGuest_name("쭌우운~~");
-		guest.setGuest_title("오늘은 수요일 타이틀");
+		Guest guest=guestDao.selectByNo(1);
+		System.out.println("### GuestDao.selectByNo(1):"+guest);
+		guest.setGuest_name("일요일");
+		guest.setGuest_title("일요일 싫어");
 		System.out.println("### GuestDao.updateGuest():"+guestDao.updateGuest(guest));
-		guest=guestDao.selectByNo(129);
+		guest=guestDao.selectByNo(1);
 		System.out.println(guest);
+		System.out.println("selectAll : "+guestDao.selectAll());
 	}
 
 }

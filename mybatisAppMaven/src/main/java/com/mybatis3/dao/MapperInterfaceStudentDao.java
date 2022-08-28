@@ -62,8 +62,9 @@ public class MapperInterfaceStudentDao {
 	}
 	public List<Student> findAllStudentsResultMap() {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		List<Student> studentList = studentMapper.findAllStudents();
+		StudentMapper studentMapper=
+				sqlSession.getMapper(StudentMapper.class);
+		List<Student> studentList=studentMapper.findAllStudentsResultMap();
 		sqlSession.close();
 		return studentList;
 	}
@@ -91,7 +92,7 @@ public class MapperInterfaceStudentDao {
 	public Student findStudentByIdWithCourses(Integer studId) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		Student student = studentMapper.findStudentByIdWithCourses(1);
+		Student student=studentMapper.findStudentByIdWithCourses(1);
 		sqlSession.close();
 		return student;
 	}
@@ -104,14 +105,14 @@ public class MapperInterfaceStudentDao {
 	public int insertStudent(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		int rowCount = studentMapper.insertStudent(student);
+		int rowCount=studentMapper.insertStudent(student);
 		sqlSession.close();
 		return rowCount;
 	}
 	public int insertStudentBySequence1(Student student) {
 		SqlSession sqlSession=sqlSessionFactory.openSession(true);
 		StudentMapper studentMapper=sqlSession.getMapper(StudentMapper.class);
-		int rowCount = studentMapper.insertStudentBySequence1(student);
+		int rowCount=studentMapper.insertStudentBySequence1(student);
 		sqlSession.close();
 		return rowCount;
 	}
@@ -143,3 +144,17 @@ public class MapperInterfaceStudentDao {
 		return rowCount;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
