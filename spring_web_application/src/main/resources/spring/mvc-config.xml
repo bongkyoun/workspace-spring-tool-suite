@@ -9,7 +9,7 @@
 	
 	
 	<!-- MVC Controller Bean -->
-	<bean 	id="helloController" 
+	<bean id="helloController" 
 			class="com.itwill.hello.controller.HelloController">
 		<property name="helloService" ref="helloService"/>	
 	</bean>		

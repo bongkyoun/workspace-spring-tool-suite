@@ -1,6 +1,7 @@
 package com.itwill.guest.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,9 @@ public class GuestListController implements Controller {
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String forwardPath="";
+		List<Guest> guestList=guestService.selectAll();
+		request.setAttribute("guestList", guestList);
+		String forwardPath="forward:/WEB-INF/views/guest_List.jsp";
 		ModelAndView mv=new ModelAndView(forwardPath);
 		return mv;
 	
