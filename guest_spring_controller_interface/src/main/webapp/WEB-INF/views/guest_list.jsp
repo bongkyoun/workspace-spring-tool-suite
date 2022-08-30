@@ -9,8 +9,8 @@
 1.request기본 객체로부터 속성객체 뽑기
 2.request기본 객체로부터 뽑은속성객체 ArrayList<Guest> 출력
 */
- ArrayList<Guest> guestList =(ArrayList<Guest>)request.getAttribute("guestList");
 --%> 
+ArrayList<Guest> guestList =(ArrayList<Guest>)request.getAttribute("guestList");
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
