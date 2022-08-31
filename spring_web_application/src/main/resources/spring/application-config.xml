@@ -13,6 +13,8 @@
 	      class="com.itwill.hello.HelloService">
 	      <property name="helloDao" ref="helloDao"/>
 	</bean>
-	
+	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    	<property name="basenames" value="messages/guest,messages/messages,messages/user"/>
+     </bean>
 	
 </beans>

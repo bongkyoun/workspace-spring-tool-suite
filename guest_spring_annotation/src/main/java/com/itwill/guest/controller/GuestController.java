@@ -55,29 +55,28 @@ public class GuestController {
 	@RequestMapping("/guest_write_form")
 	public String guest_write_form() {
 		return "forward:/WEB-INF/views/guest_write_form.jsp";
-	
 	}
 	@RequestMapping(value = "/guest_write_action", method = RequestMethod.POST)
 	public String guest_write_action(@ModelAttribute Guest guest, Model model) throws Exception {
 		guestService.insertGuest(guest);
-		return "forward:/WEB-INF/views/guest_write_form.jsp";
+		return "redirect:guest_view.do";
 	}
 	@RequestMapping(value = "/guest_modify_form", method = RequestMethod.POST)
 	public String guest_modify_form(@ModelAttribute Guest guest, Model model) throws Exception{
 		guest = guestService.selectByNo(guest.getGuest_no());
 		model.addAttribute(guest);
-		return "forward:WEB-INF/views/guest_modify_form.jsp";
+		return "forward:/WEB-INF/views/guest_modify_form.jsp";
 	}
 	@RequestMapping(value = "/guest_modify_action", method = RequestMethod.POST)
 	public String guest_modify_action(@ModelAttribute Guest guest, Model model) throws Exception {
 		guestService.updateGuest(guest);
 		model.addAttribute("guest_no", guest.getGuest_no());
-		return "forward:guest_view";
+		return "redirect:guest_view.do";
 	}
 	@RequestMapping(value = "/guest_remove_action", method = RequestMethod.POST)
 	public String guest_remove_action(@RequestParam int guest_no, Model model) throws Exception {
 		guestService.deleteGuest(guest_no);
-		return "redirect:guest_list";
+		return "redirect:guest_list.do";
 	}
 }
 
