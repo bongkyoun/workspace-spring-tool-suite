@@ -117,6 +117,12 @@ public class UserController {
 		session.invalidate();
 		return "redirect:user_main";
 	}
+	@LoginCheck
+	@RequestMapping(value = "/user_logout_action")
+	public String user_logout_action(HttpSession session) {
+		session.invalidate();
+		return "redirect:user_main";
+	}
 	
 	@RequestMapping(value = {"/user_modify_form",
 							 "/user_login_action",

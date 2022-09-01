@@ -1,13 +1,7 @@
 <%@page import="com.itwill.user.User"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	/*
-	request기본객체로부터 속성객체를 뽑아서 출력
-	*/
-	User loginUser=	(User)request.getAttribute("loginUser");
-%>    
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
