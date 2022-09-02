@@ -1,7 +1,6 @@
 package com.itwill.guest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class GuestServiceImpl implements GuestService {
 	@Autowired
-	@Qualifier("guestDaoImplMyBatisMapperInterface")
 	private GuestDao guestDao;
 	public GuestServiceImpl() {
 		System.out.println("1.#### GuestServiceImpl() 기본생성자");
@@ -41,7 +39,7 @@ public class GuestServiceImpl implements GuestService {
 		this.guestDao = guestDao;
 	}
 	@Override
-	public List<Guest> selectAll()throws Exception{
+	public ArrayList<Guest> selectAll()throws Exception{
 		return guestDao.selectAll();
 	}
 	@Override
