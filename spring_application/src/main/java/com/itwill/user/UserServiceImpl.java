@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	}
 	public int create(User user) throws Exception {
 		System.out.println("#### UserServiceImpl : create() 호출");
+		
+		Thread.sleep(1234);
+		
 		return 0;
 	}
 	public User findUser(String userId) throws Exception {
@@ -39,6 +42,10 @@ public class UserServiceImpl implements UserService {
 	}
 	public int update(User user) throws Exception {
 		System.out.println("#### UserServiceImpl : update() 호출");
+		if(true) {
+			throw new Exception("회원수정시 예외발생!!!!");
+		}
+		
 		return 0;
 	}
 	public int remove(String userId) throws Exception {

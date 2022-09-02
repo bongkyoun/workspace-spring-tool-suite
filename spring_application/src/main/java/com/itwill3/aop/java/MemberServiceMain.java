@@ -1,5 +1,4 @@
-package com.itwill3.proxy;
-
+package com.itwill3.aop.java;
 
 public class MemberServiceMain {
 
@@ -11,12 +10,12 @@ public class MemberServiceMain {
 		memberService.view();
 		memberService.login();
 		System.out.println("--------weaving-------");
-		MemberService memberServiceProxy1 = new MemberServiceSpringProxy(new MemberServiceImpl(),new LoggingBeforeAdvice());
-		memberServiceProxy1.create();
-		memberServiceProxy1.list();
-		memberServiceProxy1.view();
-		memberServiceProxy1.login();
-			
+		MemberService memberServiceProxy= 
+				new MemberServiceSpringProxy(new MemberServiceImpl(),new LoggingBeforeAdvice());
+		memberServiceProxy.create();	
+		memberServiceProxy.list();	
+		memberServiceProxy.view();	
+		memberServiceProxy.login();	
 		
 
 	}

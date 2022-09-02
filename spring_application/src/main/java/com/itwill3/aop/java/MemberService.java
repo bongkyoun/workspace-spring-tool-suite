@@ -1,5 +1,4 @@
-package com.itwill3.proxy;
-
+package com.itwill3.aop.java;
 
 public interface MemberService {
 	public void create();
