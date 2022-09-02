@@ -26,8 +26,9 @@
 	
 	<aop:config>
 		 <aop:aspect ref="loggingBeforeAdvice">
-		 	<aop:pointcut 
-		 	expression="execution(public java.util.List com.itwill.user.UserService.findUserList())" id="loggingBeforePointCut"/>
+		 	<aop:pointcut
+		 	id="loggingBeforePointCut"
+		 	expression="execution(public java.util.List com.itwill.user.UserService.findUserList())" />
 		 	<aop:before method="beforeLog" pointcut-ref="loggingBeforePointCut"/>
 		 </aop:aspect>
 		

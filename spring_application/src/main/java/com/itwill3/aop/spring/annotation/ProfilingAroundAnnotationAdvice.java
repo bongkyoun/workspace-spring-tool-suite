@@ -14,17 +14,12 @@ import org.springframework.util.StopWatch;
 @Aspect
 public class ProfilingAroundAnnotationAdvice {
 	/*
-	<aop:aspect ref="profilingAroundAdvice">
-			<aop:pointcut expression="execution(* *..UserDao.*(..))" id="profilingAroundAdvicePointcut"/>
-			<aop:around method="aroundProfiling" 
-						pointcut-ref="profilingAroundAdvicePointcut"/>
+	<aop:aspect ref="profilingAroudAdvice">
+			<aop:around method="aroundProfiling" pointcut="execution(* com.itwill.user.UserService.*(..))"/>
 	</aop:aspect>
 	 */
 	
-	@Pointcut("execution(* *..UserDao.*(..))") 
-	private void profilingAroundAdvicePointCut() {}
-	
-	@Around("profilingAroundAdvicePointCut()")
+	@Around(value = "execution(* com.itwill.user.UserService.*(..))")
 	public Object aroundProfiling(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("###[AroundAdvice(Annotation)]메쏘드호출전 필요한작업기술");
 		StopWatch stopWatch=new StopWatch();

@@ -3,6 +3,7 @@ package com.itwill3.aop.spring.annotation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /*
@@ -12,16 +13,24 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingBeforeAnnotationAdvice {
 	/*
+	 <aop:pointcut
+		 id="loggingBeforePointCut"
+		 expression="execution(public java.util.List com.itwill.user.UserService.findUserList())" />
+	
 	<aop:aspect ref="loggingBeforeAdvice">
-			<aop:before method="beforeLog" 
-						pointcut="execution(* com.itwill.user.UserService.find*(..))"/>
+		 	<aop:before method="beforeLog" pointcut-ref="loggingBeforePointCut"/>
 	</aop:aspect>
 	*/
+	@Pointcut(value = "execution(public java.util.List com.itwill.user.UserService.findUserList())" )
+	public void loggingBeforePointCut() {
+		
+	}
 	
-	 @Before(value = "execution(* com.itwill.user.UserService.find*(..))")
+	 @Before(value = "loggingBeforePointCut()")
 	 public void beforeLog(JoinPoint jp) {
 		 System.out.println(""
 		 		+ "###[사전충고(Annotation)]메쏘드가 호출되기전필요한 작업처리(log)");
+		
 		 Object targetObject = jp.getTarget();
 		 String className = targetObject.getClass().getName();
 		 String methodName = jp.getSignature().getName();
@@ -41,6 +50,6 @@ public class LoggingBeforeAnnotationAdvice {
 		System.out.println("###[사전충고(Annotation)]"+
 					className+"."+
 					methodName+"("+args+")");
-	
+		
 	 }
 }
