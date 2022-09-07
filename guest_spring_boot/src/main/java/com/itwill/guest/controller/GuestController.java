@@ -61,7 +61,7 @@ public class GuestController {
 		try {
 			// GuestDao guestDao=new GuestDao();
 			int updateRowCount = guestService.updateGuest(guest);
-			forwardPath = "redirect:guest_view.do?guest_no=" + guest.guest_no;
+			forwardPath = "redirect:guest_view?guest_no=" + guest.guest_no;
 
 		} catch (Exception e) {
 			e.printStackTrace();

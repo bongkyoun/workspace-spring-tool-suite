@@ -28,17 +28,21 @@
 		/*
 		 1.id selector(#)
 		*/
-		
+		var titleDivElement = document.querySelector('#title');
+		titleDivElement.innerHTML='안녕 qureySelector!!!!!!!~!~!~!'
 		/*
+		
 		2.class selector(.)
 		*/
-	
-		
+		var contentsPElement = document.querySelector(".contents");
+		contentsPElement.innerHTML+="변경";
 		/*
 		3. tag selector
 		*/
-		
-		
+		var h2ElementArray = document.querySelectorAll('h2');
+		for(var i = 0; h2ElementArray.length; i++) {
+			h2ElementArray[i].style.backgroundColor='mistyrose';
+		}
 	</script>
 </body>
 </html>
