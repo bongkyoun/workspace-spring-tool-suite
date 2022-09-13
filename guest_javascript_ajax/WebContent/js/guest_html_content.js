@@ -74,8 +74,8 @@ function guest_main_content() {
 						</object>
 		`;
 }
-function guest_modify_form_content() {
-				return `<table border="0" cellpadding="0" cellspacing="0">
+function guest_modify_form_content(guest) {
+	return `<table border="0" cellpadding="0" cellspacing="0">
 				<tbody>
 					<tr>
 						<td><br>
@@ -88,45 +88,45 @@ function guest_modify_form_content() {
 									</tr>
 								</tbody>
 							</table> <!-- modify Form  -->
-							<form name="f" method="post">
-								<input type="hidden" name="guest_no" value="3">
+							<form name="f" id="guest_modify_form" method="post">
+								<input type="hidden" name="guest_no" value="${guest.guest_no}">
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tbody>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">번호</td>
 											<td align="left" width="490" bgcolor="ffffff"
-												style="padding-left: 10px">3</td>
+												style="padding-left: 10px">${guest.guest_no}</td>
 										</tr>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">이름</td>
 											<td align="left" width="490" bgcolor="ffffff"
 												style="padding-left: 10px"><input type="text"
-												style="width: 150" name="guest_name" value="김경호3333"></td>
+												style="width: 150" name="guest_name" value="${guest.guest_name}"></td>
 										</tr>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">홈페이지</td>
 											<td align="left" width="490" bgcolor="ffffff"
 												style="padding-left: 10px"><input type="text"
-												style="width: 150" name="guest_homepage" value="http://"></td>
+												style="width: 150" name="guest_homepage" value="${guest.guest_homepage}"></td>
 										</tr>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">이메일</td>
 											<td align="left" width="490" bgcolor="ffffff"
 												style="padding-left: 10px"><input type="text"
-												style="width: 240" name="guest_email" value="guard3@naver.com"></td>
+												style="width: 240" name="guest_email" value="${guest.guest_email}"></td>
 										</tr>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">제목</td>
 											<td align="left" width="490" bgcolor="ffffff"
 												style="padding-left: 10px"><input type="text"
-												style="width: 240" name="guest_title" value="방명록 사용법 [수정]gfhf"></td>
+												style="width: 240" name="guest_title" value="${guest.guest_title}"></td>
 										</tr>
 										<tr>
 											<td width="100" align="center" bgcolor="E6ECDE" height="22">내용</td>
 											<td align="left" width="490" bgcolor="ffffff"
 												style="padding-left: 10px"><textarea wrap="soft"
-													style="width: 240px" rows="10" name="guest_content">방명록처럼 사용하시면 됩니다람쥐~~~</textarea>
+													style="width: 240px" rows="10" name="guest_content">${guest.guest_content}</textarea>
 			
 											</td>
 										</tr>
@@ -144,9 +144,8 @@ function guest_modify_form_content() {
 								</table></td>
 					</tr>
 				</tbody>
-			</table>
-					`;
-			}
+			</table>`;
+}
 function guest_view_content(guest) {
 	return `<table border="0" cellpadding="0" cellspacing="0">
 					<tbody><tr>
