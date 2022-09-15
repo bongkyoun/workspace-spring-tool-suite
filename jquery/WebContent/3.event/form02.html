@@ -36,29 +36,60 @@ td {
 			element 속성(attribute) 접근
 			*/
 			//attribute set
-			
+			$('#p_image').attr('src','icon1.png');
+			$('#p_image').attr('width','20px');
+			$('#p_image').attr('height','20px');
 			
 			//attribute get
-		
+			console.log($('#p_image').attr('src'));
+			console.log($('#p_image').attr('width'));
+			console.log($('#p_image').attr('height'));
 			
 			/*
 			form태그안에 있는 input element 접근
 			*/
 			//read
-			/*
+			console.log('----------dom tree loading 후 form element val get--------------');
 			console.log("1.$('#id').attr('value')		  [x]:"+$('#id').attr('value'));
 			console.log("1.$('#id').val()        		  [o]:"+$('#id').val());
 			console.log("2.$('#name').val()      		  [o]:"+$('#name').val());
 			console.log("3.$('#alias').val()     		  [o]:"+$('#alias').val());
 			console.log("4.$('#job option:selected').val()[o]:"+$('#job option:selected').val());
-			*/
+			
 			/*
 			 입력 엘레멘트의 값을 접근할때는  .val() 을사용
 		      - .val() 은 DOM트리생성이후에 동적으로변하는 
 		           사용자입력데이타를 읽을수있다
 		     */
-			
 			//set
+			$('#id').val('yyy');
+			$('#name').val('김변경');
+			$('#alias').val('제임스딘');
+			$('#job').val('프리렌서');
+			//순서로 지정-->$('#job > option')[2].selected=true; = $('#job').val('프리렌서');
+			
+			//$(document.f) = $('#f').submit(function(e)
+			$('#f').submit(function(e){
+				console.log('----------sunmit 시 form element val get--------------');
+				console.log("1.$('#id').attr('value')		  [x]:"+$('#id').attr('value'));
+				console.log("1.$('#id').val()        		  [o]:"+$('#id').val());
+				console.log("2.$('#name').val()      		  [o]:"+$('#name').val());
+				console.log("3.$('#alias').val()     		  [o]:"+$('#alias').val());
+				console.log("4.$('#job option:selected').val()[o]:"+$('#job option:selected').val());
+				/*
+				폼을이용한 서버로의 jquery ajax요청
+				1.parameter생성
+				2.유효성체크
+				3.jqury ajax요청
+				4.submit default중지
+				*/
+				var parameter = $(e.target).serialize();
+				//$.ajax();
+				console.log(">>>>>>>요청 파라메타 생성 : "+parameter);
+				console.log(">>>>>>>ajax 요청");
+				e.preventDefault();
+				console.log(">>>>>>>페이지 요청 중지");
+			});
 			
 	
 			
