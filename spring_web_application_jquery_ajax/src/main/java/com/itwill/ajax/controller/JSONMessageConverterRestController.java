@@ -10,7 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwill.ajax.News;
-
+/*
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+*/
 @RestController
 public class JSONMessageConverterRestController {
 	
@@ -29,13 +45,26 @@ public class JSONMessageConverterRestController {
 	  }	
 			
 	 */
-	
-	@RequestMapping(value = "newsTitleJson")
+	@RequestMapping(value = "newsTitleJson",
+			produces = "application/json;charset=UTF-8")
 	public News newsTitleJSON() {
 		return this.getNewsList().get(2);
 	}
-	
-	
+	@RequestMapping(value = "nuesTitlesListJson",
+			produces ="application/json;charset=UTF-8")
+	public List<News> newsTitlesListJson(){
+		return this.getNewsList();
+	}
+	@RequestMapping(value = "/newsTitlesMapJson",
+			produces="application/json;chardset=UTF-8")
+	public Map newsTitlesMapJson() {
+		Map newsMap=new HashMap();
+		newsMap.put("code", 1);
+		newsMap.put("msg", "잘못된 요청");
+		newsMap.put("url", "guest_main");
+		newsMap.put("data", this.getNewsList());
+		return newsMap;
+	}
 	private List<News> getNewsList() {
 		List<News> newsList = new ArrayList<News>();
 		newsList.add(new News("참으로 수고 많으셨습니다...", "연합뉴스", new Date().toLocaleString()));
@@ -50,7 +79,6 @@ public class JSONMessageConverterRestController {
 		return newsList;
 	}
 }
-
 
 
 

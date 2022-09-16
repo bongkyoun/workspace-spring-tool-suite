@@ -25,19 +25,19 @@ import com.itwill.ajax.NewsListResult;
 @Controller
 public class XMLMessageConverterRestController {
 	@ResponseBody
-	@RequestMapping(value = "/newsTitleXML")
+	@RequestMapping(value = "/newsTitleXML",produces = "text/xml;charset=UTF-8")
 	public News newsTitleXML() {
 		News news=this.getNewsList().get(0);
 		return news;
 	}
 	@ResponseBody
-	@RequestMapping(value = "/newsTitlesListXML")
-	public List<News> newsTitleListXML() {
+	@RequestMapping(value="newsTitlesListXML")
+	public List<News> newsTitleListXML(){
 		return this.getNewsList();
 	}
 	@ResponseBody
 	@RequestMapping(value = "newsTitlesMapXML")
-	public Map newsTitlesMapXml() {
+	public Map newsTitlesMapXML() {
 		List<News> newsList=this.getNewsList();
 		Map newsMap=new HashMap();
 		newsMap.put("code", 1);

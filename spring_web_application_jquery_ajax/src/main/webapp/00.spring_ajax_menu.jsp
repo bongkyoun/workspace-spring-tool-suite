@@ -11,12 +11,13 @@
 <ol>
 	<li><a href='response_string1'>String response1[MessageConverter]</a></li>
 	<li><a href='response_string2'>String response2[MessageConverter]</a></li>
-	<li><a href='newsTitleXML'>XML response[MessageConverter]News</a></li>
+	<li><a href='newsTitleXML'>XML News response[MessageConverter]News</a></li>
 	<li><a href='newsTitlesListXML'>XML List response[MessageConverter]List</a></li>
-	<li><a href='newsTitlesMapXML'>XML response[MessageConverter] Map </a></li>
-	<li><a href='newsTitleJson'>JSON response[MessageConverter] News </a></li>
-	<li><a href='newsTitlesListJson'>JSON response[MessageConverter] List </a></li>
-	<li><a href='newsTitlesMapJson'>JSON response[MessageConverter] Map </a></li>
+	<li><a href='newsTitlesMapXML'>XML Map response[MessageConverter]Map </a></li>
+	
+	<li><a href='newsTitleJson'>JSON News response[MessageConverter] News </a></li>
+	<li><a href='newsTitlesListJson'>JSON List response[MessageConverter] List </a></li>
+	<li><a href='newsTitlesMapJson'>JSON Map response[MessageConverter] Map </a></li>
 </ol>
 </body>
 </html>

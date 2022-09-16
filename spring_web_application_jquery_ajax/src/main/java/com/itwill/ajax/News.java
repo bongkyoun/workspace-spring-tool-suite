@@ -1,13 +1,10 @@
 package com.itwill.ajax;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-//@XmlRootElement(name = "myNews")
-//@JacksonXmlRootElement(localName = "news")
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
+@JacksonXmlRootElement(localName = "news")
 public class News {
 	
 	private String title;
@@ -23,8 +20,8 @@ public class News {
 		this.company = company;
 		this.date = date;
 	}
-	//@XmlElement(name = "newsTitle")
-	//@JacksonXmlProperty(localName = "newsTitle")
+	@JsonProperty(value = "newsTitle")
+	@JacksonXmlProperty(localName = "newsTitle")
 	public String getTitle() {
 		return title;
 	}
