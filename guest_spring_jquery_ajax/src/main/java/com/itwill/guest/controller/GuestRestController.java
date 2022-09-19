@@ -26,6 +26,189 @@ public class GuestRestController {
 	@Autowired
 	private GuestService guestService;
 	
+	@GetMapping(value = {
+						"/guest_write_action_json",
+						"/guest_remove_action_json",
+						"/guest_modify_form_json",
+						"/guest_modify_action_json"
+						},
+		produces = "application/json;charset=UTF-8")
+		public Map guest_json_get() {
+		Map resultMap=new HashMap();
+		int code=2;
+		String url="guest_main";
+		String msg="잘못된 요청방식입니다.";
+		List<Guest> resultList=new ArrayList<Guest>();
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		return resultMap;
+		}
+	
+	@PostMapping(value = "/guest_modify_action_json",
+			produces = "application/json;charset=UTF-8")
+	public Map guest_modify_action_json(@ModelAttribute Guest guest) {
+		Map resultMap=new HashMap();
+		int code=1;
+		String url="";
+		String msg="";
+		List<Guest> resultList=new ArrayList<Guest>();
+		try {			
+			code=1;
+			url="";
+			msg="";
+			int row_count=guestService.updateGuest(guest);
+			
+		} catch (Exception e) {
+			code=2;
+			url="";
+			msg="방명록 수정 실패";
+			e.printStackTrace();
+		}
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
+	
+	@GetMapping(value = {"/guest_write_action_json"},
+			produces = "application/json;charset=UTF-8")
+	public Map guest_write_action_json_get() {
+		Map resultMap=new HashMap();
+		int code=2;
+		String url="guest_main";
+		String msg="잘못된 요청 방식입니다.";
+		List<Guest> resultList=new ArrayList<Guest>();
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
+	@PostMapping(value = "/guest_modify_form_json",
+			produces = "application/json;charset=UTF-8")
+	public Map guest_modify_form_json(@RequestParam int guest_no) {
+		Map resultMap=new HashMap();
+		int code=2;
+		String url="";
+		String msg="";
+		List<Guest> resultList=new ArrayList<Guest>();
+		try {			
+			code=1;
+			url="";
+			msg="";
+			 Guest guest=guestService.selectByNo(guest_no);
+			 resultList.add(guest);
+			
+		} catch (Exception e) {
+			code=2;
+			url="";
+			msg="방명록 수정 폼 실패";
+			e.printStackTrace();
+		}
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
+	@PostMapping(value = "/guest_remove_action_json",
+			produces = "application/json;charset=UTF-8")
+	public Map guest_remove_action_json(@RequestParam int guest_no) {
+		Map resultMap=new HashMap();
+		int code=1;
+		String url="";
+		String msg="";
+		List<Guest> resultList=new ArrayList<Guest>();
+		try {			
+			code=1;
+			url="";
+			msg="";
+			int row_count=guestService.deleteGuest(guest_no);
+			
+		} catch (Exception e) {
+			code=2;
+			url="";
+			msg="방명록 삭제실패";
+			e.printStackTrace();
+		}
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
+	@PostMapping(value = "/guest_write_action_json",
+			produces = "application/json;charset=UTF-8")
+	public Map guest_write_action_json(@ModelAttribute Guest guest) {
+		Map resultMap=new HashMap();
+		int code=1;
+		String url="";
+		String msg="";
+		List<Guest> resultList=new ArrayList<Guest>();
+		try {			
+			code=1;
+			url="";
+			msg="";
+			int insert_guest_no=guestService.insertGuest(guest);
+			resultList.add(
+					new Guest(insert_guest_no, "", "", "", "", "", ""));
+			
+		} catch (Exception e) {
+			code=2;
+			url="";
+			msg="방명록 쓰기 실패";
+			e.printStackTrace();
+		}
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
+	@RequestMapping(value = "/guest_detail_json",
+			produces = "application/json;charset=UTF-8")
+	public Map guest_detail_json(@RequestParam int guest_no) {
+		Map resultMap=new HashMap();
+		int code=1;
+		String url="";
+		String msg="";
+		List<Guest> resultList=new ArrayList<Guest>();
+		
+		try {
+			Guest guest =guestService.selectByNo(guest_no);
+			code=1;
+			url="guest_detail";
+			msg="";
+			resultList.add(guest);
+		} catch (Exception e) {
+			code=2;
+			url="guest_error";
+			msg="방명록상세보기실패";
+			e.printStackTrace();
+		}
+		
+		
+		resultMap.put("code", code);
+		resultMap.put("url", url);
+		resultMap.put("msg", msg);
+		resultMap.put("data",resultList);
+		
+		return resultMap;
+	}
+	
 	
 	@RequestMapping(value = "/guest_list_json",
 					produces = "application/json;charset=UTF-8")
@@ -43,7 +226,7 @@ public class GuestRestController {
 			resultList=guestList;
 		} catch (Exception e) {
 			code=2;
-			url="guest_list";
+			url="guest_main";
 			msg="실패";
 			e.printStackTrace();
 		}
