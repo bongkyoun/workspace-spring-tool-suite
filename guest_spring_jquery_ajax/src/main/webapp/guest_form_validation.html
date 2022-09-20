@@ -8,7 +8,22 @@
 <link rel="icon" href="image/favicon-32x32.png">
 <style type="text/css" media="screen">
 </style>
+<style type="text/css">
+/*****************form validator css추가************/
+input.error,textarea.error{
+	border: 1px solid red;
+}
+label.error{
+	margin-left:10px;
+	color:orange;
+}
+.valid{
+	border: 1px solid green;
+}
+</style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- jquery validator plugin cdn -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 <script type="text/javascript" src="js/guest_html_content.js"></script>
 <script type="text/javascript">
 </script>
@@ -17,19 +32,98 @@ $(function(){
     /*
     DOM Tree가 생성된후이벤트등록
     */
+    /*###############################[form validator plugin]##########################
+    form validator
+	 - HOMEPAGE :   https://jqueryvalidation.org/
+	 - API      :   https://jqueryvalidation.org/validate/
+		1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
+		2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
+	#################################################################################/
+	
+	/* validator객체변수선언 */
+	var validator=null;
+	/*validator객체 디폴트속성 설정*/
+    $.validator.setDefaults({
+			rules:{
+				guest_name:{
+					required:true,
+					minlength: 3,
+					maxlength: 10
+				},
+				guest_title:{
+					required: true
+				},
+				guest_content:{
+					required: true
+				},
+				guest_homepage:{
+					required: true,
+					url:true
+				},
+				guest_email:{
+					required: true,
+					email:true
+				}
+				
+			},
+			messages:{
+				guest_name:{
+					required: "이름을 입력하세요",
+					minlength: "이름은 {0} 글자이상입니다.",
+					maxlength: "이름은 {0} 글자이하입니다."
+				},
+				guest_title:{
+					required: "제목을 입력하세요"
+				},
+				guest_content:{
+					required: "내용을 입력해주세요"
+				},
+				guest_homepage:{
+					required: "홈페이지를 입력해주세요",
+					url:'홈페이지 형식이틀렸어요'
+				},
+				guest_email:{
+					required: "이메일을 입력해 주세요",
+					email:'이메일 형식이틀렸어요'
+				}
+			},
+			errorClass:'error',
+			validClass:'valid'
+    });
     /*########################## event ########################*/
     /****************guest_home*******************************/
     $('#menu_guest_home').click(function(e){
 		$('#content').html(guest_main_content());
 		e.preventDefault();
     });
-   
-    /***guest_write_form*************************/
+    /***guest_write_form[form validator plugin]**/
     $(document).on('click','#menu_guest_write_form,#btn_guest_write_form',function(e){
 			$('#content').html(guest_write_form_content());
+			/*
+			1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
+		 	2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
+		 	*/
+		 	validator =  $('#guest_write_form').validate({
+		 	    rules:{
+		 			guest_name:{
+		 			    required:true,
+		 			    minlength:5,
+		 			    maxlength:7
+		 			}
+		 	    },
+		 	    messages:{
+			 		guest_name:{
+		 			    required:'이름을 입력하세요',
+		 			    minlength:'이름은 {0} 글자이상입니다',
+		 			    maxlength:'이름은 {0} 글자이하입니다'
+		 			}
+		 	    },
+		 	    errorClass:'error',
+		 	    validClass:'valid'
+		 	});
 			e.preventDefault();
 	});
-   
+  
     /***guest_detail**********************************/
     $(document).on('click','.guest_item_a',function(e){
 		var guest_no = e.target.getAttribute('guest_no');
@@ -60,60 +154,58 @@ $(function(){
 		});
 		e.preventDefault();
     });
-   
-    /*********guest_write_action ****************************/
+    /********* guest_write_action[form validator plugin]******************************/
     $(document).on('click','#btn_guest_write_action',function(e){
-	
-		if (document.f.guest_name.value == "") {
-			alert("이름을 입력하십시요.");
-			document.f.guest_name.focus();
-			return false;
-		}
-		if (document.f.guest_email.value == "") {
-			alert("이메일을 입력하십시요.");
-			document.f.guest_email.focus();
-			return false;
-		}
-		if (document.f.guest_homepage.value == "") {
-			alert("홈페이지를 입력하십시요.");
-			document.f.guest_homepage.focus();
-			return false;
-		}
+		/* 
+		1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
+	 	2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
+	 	3. validator.form()메쏘드를 호출해서 유효성여부를 체크한다.
+	 	*/ 
+	 	if(validator.form()){
+	 		$.ajax({
+			    url:'guest_write_action_json',
+			    method:'POST',
+			    data:$('#guest_write_form').serialize(),
+			    success:function(jsonResult){
+					console.log(jsonResult);
+					if(jsonResult.code==1){
+					    
+					    //쓰기성공시 guest list보여주기
+					    // - #menu_guest_list anchor의 click event trigger[발생]
+						
+						$('#menu_guest_list').trigger('click'); 
+					}else if(jsonResult.code==2){
+					    alert(jsonResult.code.msg);
+					}
+			    }
+			});
+	 	} 
+	 	
+	});
 
-		if (document.f.guest_title.value == "") {
-			alert("제목을 입력하십시요.");
-			document.f.guest_title.focus();
-			return false;
-		}
-		if (document.f.guest_content.value == "") {
-			alert("내용을 입력하십시요.");
-			document.f.guest_content.focus();
-			return false;
-		}
+   /*********guest_modify_form[form validator plugin]***********/
+   $(document).on('click','#btn_guest_modify_form',function(e){
 		
-		
+		var param = 'guest_no='+$(e.target).attr('guest_no');
 		$.ajax({
-		    url:'guest_write_action_json',
+		    url:'guest_modify_form_json',
 		    method:'POST',
-		    data:$('#guest_write_form').serialize(),
+		    data:param,
+		    dataType:'json',
 		    success:function(jsonResult){
-				console.log(jsonResult);
-				if(jsonResult.code==1){
-				    //쓰기성공시 guest list보여주기
-				    // - #menu_guest_list anchor의 click event trigger[발생]
-					$('#menu_guest_list').trigger('click'); 
-				}else if(jsonResult.code==2){
-				    alert(jsonResult.code.msg);
-				   
-				}
+				$('#content').html(guest_modify_form_content(jsonResult.data[0]));
+				/* 
+				1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
+			 	2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
+				*/
+				validator = $('#guest_modify_form').validate();
 		    }
 		});
-	});
+		
+   });
    
-  
     /*********guest_modify_form***********/
     $(document).on('click','#btn_guest_modify_form',function(e){
-		
 		var param = 'guest_no='+$(e.target).attr('guest_no');
 		$.ajax({
 		    url:'guest_modify_form_json',
@@ -147,12 +239,50 @@ $(function(){
 								$('#content').html(guest_view_content(jsonResult.data[0]));
 						    }
 						});
+					    
+					    
+					    
 					}else if(jsonResult.code==2){
 					    alert(jsonResult.msg);
 					}
 			    }
 			});
 	});
+    /*********guest_modify_action[form validator plugin]*********/
+    $(document).on('click','#btn_guest_modify_action',function(e){
+		/* 
+    	1. $(form).validate() function은 form loading시에 미리 호출되어있어야한다.
+		2. var validator=$(form).validate(); 실행후 반환되는 validator 객체를 사용한다.
+		3. validator.form()메쏘드를 호출해서 유효성여부를 체크한다.
+		*/
+		if(validator.form()) {
+			var param=$('#guest_modify_form').serialize();
+			$.ajax({
+			    url:'guest_modify_action_json',
+			    method:'POST',
+			    data:param,
+			    dataType:'json',
+			    success:function(jsonResult){
+					if(jsonResult.code==1){
+					    var param='guest_no='+$("#guest_modify_form input[name='guest_no']").val();
+					    console.log(param);
+						$.ajax({
+						    url:'guest_detail_json',
+						    method:'GET',
+						    dataType:'json',
+						   	data:param,
+						    success:function(jsonResult){
+								$('#content').html(guest_view_content(jsonResult.data[0]));
+						    }
+						});
+					}else if(jsonResult.code==2){
+					    alert(jsonResult.msg);
+					}
+			    }
+			});
+		}
+    });
+    
     /*********guest_remove_action*********/
     $(document).on('click','#btn_guest_remove_action',function(e){
 		var param='guest_no='+$(e.target).attr('guest_no');

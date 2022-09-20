@@ -32,8 +32,8 @@ public class GuestRestController {
 						"/guest_modify_form_json",
 						"/guest_modify_action_json"
 						},
-		produces = "application/json;charset=UTF-8")
-		public Map guest_json_get() {
+			produces = "application/json;charset=UTF-8")
+	public Map guest_json_get() {
 		Map resultMap=new HashMap();
 		int code=2;
 		String url="guest_main";
@@ -44,26 +44,25 @@ public class GuestRestController {
 		resultMap.put("msg", msg);
 		resultMap.put("data",resultList);
 		return resultMap;
-		}
+	}
 	
 	@PostMapping(value = "/guest_modify_action_json",
 			produces = "application/json;charset=UTF-8")
 	public Map guest_modify_action_json(@ModelAttribute Guest guest) {
 		Map resultMap=new HashMap();
-		int code=1;
+		int code=2;
 		String url="";
 		String msg="";
 		List<Guest> resultList=new ArrayList<Guest>();
-		try {			
+		try {
 			code=1;
 			url="";
 			msg="";
 			int row_count=guestService.updateGuest(guest);
-			
 		} catch (Exception e) {
 			code=2;
 			url="";
-			msg="방명록 수정 실패";
+			msg="방명록수정실패";
 			e.printStackTrace();
 		}
 		resultMap.put("code", code);
@@ -73,24 +72,6 @@ public class GuestRestController {
 		
 		return resultMap;
 	}
-	
-	
-	@GetMapping(value = {"/guest_write_action_json"},
-			produces = "application/json;charset=UTF-8")
-	public Map guest_write_action_json_get() {
-		Map resultMap=new HashMap();
-		int code=2;
-		String url="guest_main";
-		String msg="잘못된 요청 방식입니다.";
-		List<Guest> resultList=new ArrayList<Guest>();
-		resultMap.put("code", code);
-		resultMap.put("url", url);
-		resultMap.put("msg", msg);
-		resultMap.put("data",resultList);
-		
-		return resultMap;
-	}
-	
 	@PostMapping(value = "/guest_modify_form_json",
 			produces = "application/json;charset=UTF-8")
 	public Map guest_modify_form_json(@RequestParam int guest_no) {
@@ -99,17 +80,16 @@ public class GuestRestController {
 		String url="";
 		String msg="";
 		List<Guest> resultList=new ArrayList<Guest>();
-		try {			
+		try {
 			code=1;
 			url="";
 			msg="";
-			 Guest guest=guestService.selectByNo(guest_no);
-			 resultList.add(guest);
-			
+			Guest guest=guestService.selectByNo(guest_no);
+			resultList.add(guest);
 		} catch (Exception e) {
 			code=2;
 			url="";
-			msg="방명록 수정 폼 실패";
+			msg="방명록수정폼실패";
 			e.printStackTrace();
 		}
 		resultMap.put("code", code);
@@ -119,16 +99,15 @@ public class GuestRestController {
 		
 		return resultMap;
 	}
-	
 	@PostMapping(value = "/guest_remove_action_json",
 			produces = "application/json;charset=UTF-8")
 	public Map guest_remove_action_json(@RequestParam int guest_no) {
 		Map resultMap=new HashMap();
-		int code=1;
+		int code=2;
 		String url="";
 		String msg="";
 		List<Guest> resultList=new ArrayList<Guest>();
-		try {			
+		try {
 			code=1;
 			url="";
 			msg="";
@@ -137,9 +116,10 @@ public class GuestRestController {
 		} catch (Exception e) {
 			code=2;
 			url="";
-			msg="방명록 삭제실패";
+			msg="방명록삭제실패";
 			e.printStackTrace();
 		}
+		
 		resultMap.put("code", code);
 		resultMap.put("url", url);
 		resultMap.put("msg", msg);
@@ -148,28 +128,30 @@ public class GuestRestController {
 		return resultMap;
 	}
 	
+	
 	@PostMapping(value = "/guest_write_action_json",
 			produces = "application/json;charset=UTF-8")
 	public Map guest_write_action_json(@ModelAttribute Guest guest) {
 		Map resultMap=new HashMap();
-		int code=1;
+		int code=2;
 		String url="";
 		String msg="";
 		List<Guest> resultList=new ArrayList<Guest>();
-		try {			
+		try {
 			code=1;
 			url="";
 			msg="";
 			int insert_guest_no=guestService.insertGuest(guest);
 			resultList.add(
-					new Guest(insert_guest_no, "", "", "", "", "", ""));
+					new Guest(insert_guest_no, "", "", "","", "",""));
 			
 		} catch (Exception e) {
 			code=2;
 			url="";
-			msg="방명록 쓰기 실패";
+			msg="방명록쓰기실패";
 			e.printStackTrace();
 		}
+		
 		resultMap.put("code", code);
 		resultMap.put("url", url);
 		resultMap.put("msg", msg);
@@ -177,6 +159,7 @@ public class GuestRestController {
 		
 		return resultMap;
 	}
+	
 	
 	@RequestMapping(value = "/guest_detail_json",
 			produces = "application/json;charset=UTF-8")
