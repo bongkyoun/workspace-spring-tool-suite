@@ -46,25 +46,27 @@ public class JSONMessageConverterRestController {
 			
 	 */
 	@RequestMapping(value = "newsTitleJson",
-			produces = "application/json;charset=UTF-8")
+					produces = "application/json;charset=UTF-8")
 	public News newsTitleJSON() {
 		return this.getNewsList().get(2);
 	}
-	@RequestMapping(value = "nuesTitlesListJson",
-			produces ="application/json;charset=UTF-8")
+	@RequestMapping(value = "newsTitlesListJson",
+					produces = "application/json;charset=UTF-8")
 	public List<News> newsTitlesListJson(){
 		return this.getNewsList();
 	}
 	@RequestMapping(value = "/newsTitlesMapJson",
-			produces="application/json;chardset=UTF-8")
+					produces = "application/json;charset=UTF-8")
 	public Map newsTitlesMapJson() {
 		Map newsMap=new HashMap();
 		newsMap.put("code", 1);
-		newsMap.put("msg", "잘못된 요청");
+		newsMap.put("msg", "잘못된요청");
 		newsMap.put("url", "guest_main");
-		newsMap.put("data", this.getNewsList());
+		newsMap.put("data" , this.getNewsList());
 		return newsMap;
 	}
+	
+	
 	private List<News> getNewsList() {
 		List<News> newsList = new ArrayList<News>();
 		newsList.add(new News("참으로 수고 많으셨습니다...", "연합뉴스", new Date().toLocaleString()));
@@ -79,6 +81,7 @@ public class JSONMessageConverterRestController {
 		return newsList;
 	}
 }
+
 
 
 
