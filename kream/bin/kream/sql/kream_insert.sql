@@ -1,0 +1,110 @@
+/**************카테고리*****************/
+insert into category values(1, '신발');
+insert into category values(2, '의류');
+insert into category values(3, '전자제품');
+
+/**************사이즈*****************/
+insert into sizes values('210', '신발');
+insert into sizes values('220', '신발');
+insert into sizes values('230', '신발');
+insert into sizes values('240', '신발');
+insert into sizes values('250', '신발');
+insert into sizes values('260', '신발');
+insert into sizes values('270', '신발');
+insert into sizes values('280', '신발');
+insert into sizes values('290', '신발');
+insert into sizes values('300', '신발');
+insert into sizes values('310', '신발');
+insert into sizes values('320', '신발');
+
+insert into sizes values('S', '의류');
+insert into sizes values('M', '의류');
+insert into sizes values('L', '의류');
+insert into sizes values('XL', '의류');
+insert into sizes values('XXL', '의류');
+
+/************제품***************/
+insert into product values(1, '신발1', sysdate, 20000, 'img', '신발');
+insert into product values(2, '신발2', sysdate, 40000, 'img', '신발');
+insert into product values(3, '신발3', sysdate, 80000, 'img', '신발');
+insert into product values(4, '신발4', sysdate, 160000, 'img', '신발');
+insert into product values(5, '신발5', sysdate, 320000, 'img', '신발');
+
+insert into product values(6, '옷1', sysdate, 20000, 'img', '의류');
+insert into product values(7, '옷2', sysdate, 50000, 'img', '의류');
+insert into product values(8, '옷3', sysdate, 70000, 'img', '의류');
+insert into product values(9, '옷4', sysdate, 80000, 'img', '의류');
+
+insert into product values(10, '바지1', sysdate, 30000, 'img', '의류');
+insert into product values(11, '바지2', sysdate, 50000, 'img', '의류');
+insert into product values(12, '바지3', sysdate, 70000, 'img', '의류');
+insert into product values(13, '바지4', sysdate, 110000, 'img', '의류');
+insert into product values(14, '바지5', sysdate, 130000, 'img', '의류');
+
+/**************제품사이즈**************/
+insert into productSize values(1, '230', 1);
+insert into productSize values(2, '250', 2);
+insert into productSize values(3, '270', 3);
+insert into productSize values(4, '290', 4);
+insert into productSize values(5, '300', 5);
+
+insert into productSize values(6, 'S', 6);
+insert into productSize values(7, 'M', 7);
+insert into productSize values(8, 'XL', 8);
+insert into productSize values(9, 'S', 9);
+
+insert into productSize values(10, 'S', 10);
+insert into productSize values(11, 'M', 11);
+insert into productSize values(12, 'L', 12);
+insert into productSize values(13, 'L', 13);
+insert into productSize values(14, 'L', 14);
+
+/************입찰상태************/
+insert into bidStatus values(1, '대기중');
+insert into bidStatus values(1, '거래중');
+insert into bidStatus values(1, '거래완료');
+
+/**************입찰타입***************/
+insert into bidType values(1, '구매');
+insert into bidType values(2, '판매');
+
+/************회원*****************/
+insert into member values('seongmin', '1234', '알찬성민', '01012345678', '970902', 'seongmin@gamil.com', '남', 0);
+insert into member values('bonggyun', '1234', '봉된장', '01023456789', '940802', 'bonggyun@gamil.com', '남', 0);
+insert into member values('jiwon', '1234', '지원준비', '01034567890', '971002', 'jiwon@gamil.com', '여', 0);
+insert into member values('hyun', '1234', '현악기', '01045678901', '900602', 'hyun@gamil.com', '남', 0);
+insert into member values('jungwook', '1234', '정욱', '01087654321', '990902', 'jungwook@gamil.com', '남', 0);
+
+/***********주소*************/
+insert into address values(1, '경기도', 'seongmin');
+insert into address values(2, '서울', 'bonggyun');
+insert into address values(3, '인천', 'jiwon');
+insert into address values(4, '경상남도', 'hyun');
+insert into address values(5, '강원도', 'jungwook');
+
+/*************제품상세****************/
+insert into productDetail values(1, 17000, sysdate, sysdate+7, 1, 'seongmin', 1, 1);
+insert into productDetail values(2, 35000, sysdate, sysdate+7, 2, 'bonggyun', 2, 1);
+insert into productDetail values(3, 87000, sysdate, sysdate+7, 3, 'jiwon', 1, 2);
+insert into productDetail values(4, 66000, sysdate, sysdate+7, 4, 'hyun', 2, 1);
+insert into productDetail values(5, 54000, sysdate, sysdate+7, 5, 'jungwook', 1, 2);
+
+insert into productDetail values(6, 87000, sysdate, sysdate+7, 3, 'seongmin', 2, 2);
+insert into productDetail values(7, 54000, sysdate, sysdate+7, 5, 'bonggyun', 2, 2);
+
+/************주문**************/
+insert into orders values(1, sysdate, 3, 6, '배송준비중');
+insert into orders values(2, sysdate, 5, 7, '배송중');
+
+/************결제종류**************/
+insert into paymentList values(1, '신용카드');
+insert into paymentList values(2, '계좌이체');
+insert into paymentList values(3, '카카오페이');
+
+/*********결제***********/
+insert into payment values(1, '지원준비', '01034567890', '인천', '안전한 배송 부탁 드립니다.', 1, 1);
+insert into payment values(1, '정욱', '01087654321', '강원도', '안전한 배송 부탁 드립니다.', 2, 3);
+
+
+
+
