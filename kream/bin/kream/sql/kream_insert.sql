@@ -63,13 +63,13 @@ insert into productSize values(5, '300', 5);
 insert into productSize values(6, 'S', 6);
 insert into productSize values(7, 'M', 7);
 insert into productSize values(8, 'XL', 8);
-insert into productSize values(9, 'S', 9);
+insert into productSize values(9, 'XXL', 9);
 
-insert into productSize values(10, 'S', 10);
-insert into productSize values(11, 'M', 11);
-insert into productSize values(12, 'L', 12);
-insert into productSize values(13, 'L', 13);
-insert into productSize values(14, 'L', 14);
+insert into productSize values(10, '90', 10);
+insert into productSize values(11, '95', 11);
+insert into productSize values(12, '100', 12);
+insert into productSize values(13, '105', 13);
+insert into productSize values(14, '110', 14);
 
 /************입찰상태************/
 insert into bidStatus values(1, '대기중');
