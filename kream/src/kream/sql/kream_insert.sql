@@ -47,11 +47,11 @@ insert into brands values(7, 'Apple', 4);
 insert into brands values(8, 'Samsung', 4);
 
 /************제품***************/
-insert into product values(1, 'Nike Air Force 1 07 WB Flax', '19/09/10', '169,000원', 'img', 1);
-insert into product values(2, 'Nike Dunk Low Retro Black', '21/01/14', '129,000원', 'img', 1);
-insert into product values(3, 'Nike Dunk Low Light Smoke Grey', '22/05/07', '129,000원', 'img', 1);
-insert into product values(4, 'Nike Dunk Low Retro Gym Red', '22/09/21', '129,000원', 'img', 1);
-insert into product values(5, 'Nike x J.Crew Killshot 2 Sail Midnight Navy', '17/02/26', '109,000원', 'img', 1);
+insert into product values(PRODUCT_P_NO_SEQ.nextval, 'Nike Air Force 1 07 WB Flax', '19/09/10', '169,000원', 'img', 1);
+insert into product values(PRODUCT_P_NO_SEQ.nextval, 'Nike Dunk Low Retro Black', '21/01/14', '129,000원', 'img', 1);
+insert into product values(PRODUCT_P_NO_SEQ.nextval, 'Nike Dunk Low Light Smoke Grey', '22/05/07', '129,000원', 'img', 1);
+insert into product values(PRODUCT_P_NO_SEQ.nextval, 'Nike Dunk Low Retro Gym Red', '22/09/21', '129,000원', 'img', 1);
+insert into product values(PRODUCT_P_NO_SEQ.nextval, 'Nike x J.Crew Killshot 2 Sail Midnight Navy', '17/02/26', '109,000원', 'img', 1);
 
 /**************제품사이즈**************/
 insert into productSize values(1, '230', 1);
@@ -82,27 +82,24 @@ insert into bidType values(2, '판매');
 
 /************회원*****************/
 insert into member values('seongmin', '1234', '알찬성민', '01012345678', '970902', 'seongmin@gamil.com', '남', 0);
-insert into member values('bongkyoun', '1234', '봉된장', '01023456789', '940802', 'bongkyoun@gamil.com', '남', 0);
+insert into member values('bongkyoun', '1234', '봉된장', '01023456789', '940601', 'bongkyoun@gamil.com', '남', 0);
 insert into member values('jiwon', '1234', '지원준비', '01034567890', '971002', 'jiwon@gamil.com', '여', 0);
 insert into member values('hyun', '1234', '현악기', '01045678901', '900602', 'hyun@gamil.com', '남', 0);
-insert into member values('jungwook', '1234', '정욱', '01087654321', '990902', 'jungwook@gamil.com', '남', 0);
-
+    
 /***********주소*************/
 insert into address values(1, '경기도', 'seongmin');
 insert into address values(2, '서울', 'bongkyoun');
 insert into address values(3, '인천', 'jiwon');
 insert into address values(4, '경상남도', 'hyun');
-insert into address values(5, '강원도', 'jungwook');
 
 /*************제품상세****************/
-insert into productDetail values(1, 17000, sysdate, sysdate+7, 1, 'seongmin', 1, 1);
-insert into productDetail values(2, 35000, sysdate, sysdate+7, 2, 'bongkyoun', 2, 1);
-insert into productDetail values(3, 87000, sysdate, sysdate+7, 3, 'jiwon', 1, 2);
-insert into productDetail values(4, 66000, sysdate, sysdate+7, 4, 'hyun', 2, 1);
-insert into productDetail values(5, 54000, sysdate, sysdate+7, 5, 'jungwook', 1, 2);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 17000, sysdate, sysdate+7, 1, 'seongmin', 1, 1);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 35000, sysdate, sysdate+7, 2, 'bongkyoun', 2, 1);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 87000, sysdate, sysdate+7, 3, 'jiwon', 1, 2);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 66000, sysdate, sysdate+7, 4, 'hyun', 2, 1);
 
-insert into productDetail values(6, 87000, sysdate, sysdate+7, 3, 'seongmin', 2, 2);
-insert into productDetail values(7, 54000, sysdate, sysdate+7, 5, 'bongkyoun', 2, 2);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 87000, sysdate, sysdate+7, 3, 'seongmin', 2, 2);
+insert into productDetail values(PRODUCTDETAIL_PD_NO_SEQ.nextval, 54000, sysdate, sysdate+7, 5, 'bongkyoun', 2, 2);
 
 /************주문**************/
 insert into orders values(1, sysdate, 3, 6, '배송준비중');
@@ -112,10 +109,10 @@ insert into orders values(2, sysdate, 5, 7, '배송중');
 insert into paymentList values(1, '신용카드');
 insert into paymentList values(2, '계좌이체');
 insert into paymentList values(3, '카카오페이');
-
+    
 /*********결제***********/
 insert into payment values(1, '지원준비', '01034567890', '인천', '안전한 배송 부탁 드립니다.', 1, 1);
-insert into payment values(2, '정욱', '01087654321', '강원도', '안전한 배송 부탁 드립니다.', 2, 3);
+insert into payment values(2, '우치하', '01087654321', '나뭇잎 마을', '안전한 배송 부탁 드립니다.', 2, 3);
 
 
 
