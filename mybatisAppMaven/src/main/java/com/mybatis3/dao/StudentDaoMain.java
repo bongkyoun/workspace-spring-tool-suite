@@ -58,7 +58,7 @@ public class StudentDaoMain {
 		System.out.println(studentDao.insertStudent(new Student(null, "김가네", "kim@naver.com",new Date(), null)));
 		System.out.println("---------insertStudentBySequence1--------------------");
 		Student insertStudent=
-			new Student(null, "시퀀스","sequence@naver.com" , new Date(), null);
+			new Student(null, "시퀀스","sequence@naver.com" , null, null);
 		System.out.println("insert row count:"+studentDao.insertStudentBySequence1(insertStudent));
 		System.out.println("insert sequence:"+insertStudent.getStudId());
 		System.out.println("---------insertStudentBySequence2--------------------");
